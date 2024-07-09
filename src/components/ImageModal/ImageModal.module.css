@@ -1,0 +1,38 @@
+.modalOverlay {
+  position: absolute;
+  top: 30px;
+  left: 10%;
+  right: 10%;
+  bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modalBoxOverlay {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.imageModal {
+  display: block;
+  object-fit: contain;
+  width: 90%;
+  height: 90%;
+}
+.textContainer {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(29, 27, 27, 0.692);
+}
+
+.modalText {
+  color: white;
+  text-align: center;
+}
