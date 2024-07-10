@@ -1,12 +1,16 @@
 import css from "./SearchBar.module.css";
-import { useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { SlMagnifier } from "react-icons/sl";
 
-function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState("");
+interface SearchBarProps {
+  onSearch: (newQuery: string) => void;
+}
 
-  const handleSubmit = (event) => {
+const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
+  const [query, setQuery] = useState<string>("");
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     if (query.trim() === "") {
       toast.error("Please enter a search query.");
@@ -35,5 +39,5 @@ function SearchBar({ onSearch }) {
       </form>
     </header>
   );
-}
+};
 export default SearchBar;

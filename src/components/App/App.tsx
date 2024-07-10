@@ -3,19 +3,19 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
-import fetchPhotos from "../../photo-api";
+import fetchPhotos, { Photo } from "../../photo-api";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import ImageModal from "../ImageModal/ImageModal";
 
-function App() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+const App: FC = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (searchQuery === "") {
@@ -42,13 +42,13 @@ function App() {
     setPage((prevPage) => prevPage + 1);
   }
 
-  function handleSearch(newQuery) {
+  function handleSearch(newQuery: string) {
     setSearchQuery(newQuery);
     setPage(1);
     setPhotos([]);
   }
 
-  function openModal(photo) {
+  function openModal(photo: Photo) {
     setSelectedPhoto(photo);
     setModalIsOpen(true);
   }
@@ -77,5 +77,5 @@ function App() {
       )}
     </>
   );
-}
+};
 export default App;
